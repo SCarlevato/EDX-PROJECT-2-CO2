@@ -338,7 +338,7 @@ model <- glmnet(X_matrix_CO2, y_target_CO2, alpha = 0)
 
 summary(model)
 
-# Choose an Optimal Value for Lambda
+# Choose an Optimal Value for Lambda :
 
 # Next, we’ll identify the lambda value that produces the lowest test mean squared error (MSE) by using k-fold cross-validation.
 
@@ -364,7 +364,7 @@ plot(cv_model)
 
 # Lastly, we can analyze the final model produced by the optimal lambda value.
 
-# We can use the following code to obtain the coefficient estimates for this model:
+# We can use the following code to obtain the coefficient estimates for this model :
 
 # Find Coefficients of Best Model :
 
@@ -410,7 +410,7 @@ mse(actual = y_target_CO2, predicted = y_predicted)
 
 rmse(actual = y_target_CO2, predicted = y_predicted)
 
-### 2- TARGET : SiteEnergyUseWN.kBtu. :
+### 2- TARGET : SiteEnergyUseWN.kBtu. : ###
 
 glimpse(building2016nonres)
 
@@ -483,9 +483,9 @@ mse(actual = y_target_NRJ, predicted = y_predicted)
 
 rmse(actual = y_target_NRJ, predicted = y_predicted)
 
-# B- XG BOOST :
+#### B- XG BOOST : ####
 
-# TARGET 1 : TotalGHGEmissions :
+### 1- TARGET : TotalGHGEmissions : ###
 
 glimpse(building2016nonres)
 
@@ -571,7 +571,7 @@ caret::MAE(test_y, pred_y)
 
 caret::RMSE(test_y, pred_y) 
 
-# TARGET 2 : SiteEnergyUseWN.kBtu. :
+### 2- TARGET : SiteEnergyUseWN.kBtu. : ###
 
 glimpse(building2016nonres)
 
