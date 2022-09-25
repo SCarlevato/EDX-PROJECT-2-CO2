@@ -655,4 +655,9 @@ caret::MAE(test_y, pred_y)
 
 # RMSE :
 
-caret::RMSE(test_y, pred_y) 
+caret::RMSE(test_y, pred_y) %>% knitr::kable()
+
+#### Appendix ####
+
+print("Operating System:")
+version
