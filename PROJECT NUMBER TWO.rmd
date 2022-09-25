@@ -98,7 +98,7 @@ vis_dat(building2016)
 
 vis_miss(building2016)
 
-### 5- Other Visualizations of Missing Dataset Values : ###
+### 5- Other Visualizations of Missing Dataset Values : ### 
 
 gg_miss_var(building2016)
 
@@ -128,7 +128,7 @@ energ[1:10,]
 
 summary(energ)
 
-#### D- Selection of the type of dwellings : ####
+#### D- Selection of the type of Dwellings : ####
 
 ### 1- Type of Buildings to choose : ### 
 
@@ -196,7 +196,7 @@ building2016 %>%
   geom_bar(stat = 'identity') +
   xlab("BuildingType") + ggtitle("Type of Habitations") 
 
-# Observations : The Most Important Type Of Habitations is "Non Residential" Type and "Multifamily LR (1-4). 
+# Observations : The Most Important Type Of Habitations is "Non Residential" Type and "Multifamily LR (1-4)" Type. 
 # For my study, I am interested in Non Residential Type.
 
 ### 2- Number Of Floors : ###
@@ -216,25 +216,25 @@ building2016 %>%
 
 ggplot(building2016, aes(x=NumberofBuildings, y=BuildingType)) + geom_boxplot() + xlim(0,10)
 
-# Observations : Multifamily HR(10+) has the most important spread of values for the Number Of Buildings.
+# Observations : Variable "Campus" has the most important spread of values for the Number Of Buildings.
 
 ### 2-  Number of Floors / Building Type : ###
 
 ggplot(building2016, aes(x=NumberofFloors, y=BuildingType)) + geom_boxplot() + xlim(0,50)
 
-# Observations : Multifamily HR(10+) has the most important spread of values for the Number Of Floors. 
+# Observations : Variable "Multifamily HR(10+)" has the most important spread of values for the Number Of Floors. 
 
 ### 3- GHGEmissionsIntensity / Building Type : ###
 
 ggplot(building2016, aes(x=GHGEmissionsIntensity, y=BuildingType)) + geom_boxplot() + xlim(0,20)
 
-# Observations : NonResidential COS has the most important spread of values for the GHGEmissionsIntensity.
+# Observations : Variable "NonResidential COS" has the most important spread of values for the GHGEmissionsIntensity.
 
 ### 4- TotalGHGEmissions / Building Type : ###
 
 ggplot(building2016, aes(x=TotalGHGEmissions, y=BuildingType)) + geom_boxplot() + xlim(0,500)
 
-# Observations : Multifamily HR(10+) has the most important spread of values for the TotalGHGEmissions.
+# Observations : Variable "Multifamily HR(10+)" has the most important spread of values for the TotalGHGEmissions.
 
 ### 5- SiteEnergyUseWN.kBtu. / Building Type : ###
 
@@ -242,7 +242,7 @@ building2016$SiteEnergyUseWN.kBtu. <- as.integer(building2016$SiteEnergyUseWN.kB
 
 ggplot(building2016, aes(x= SiteEnergyUseWN.kBtu., y=BuildingType)) + geom_boxplot() + xlim(0,5000000)
 
-# Observations : Multifamily MR (10+) has the most important spread of values for the SiteEnergyUseWN.kBtu.
+# Observations : Variable "Multifamily MR (10+)" has the most important spread of values for the SiteEnergyUseWN.kBtu.
 
 ### 6- SiteEnergyUse.kBtu. / Building Type : ###
 
@@ -250,7 +250,7 @@ building2016$SiteEnergyUse.kBtu. <- as.integer(building2016$SiteEnergyUse.kBtu.)
 
 ggplot(building2016, aes(x= SiteEnergyUse.kBtu., y=BuildingType)) + geom_boxplot() + xlim(0,5000000)
 
-# Observations : Multifamily MR (10+) has the most important spread of values for the SiteEnergyUse.kBtu.
+# Observations : Variable "Nonresidential" has the most important spread of values for the SiteEnergyUse.kBtu.
 
 #### C- Multivariate Analysis : ####
 
@@ -305,11 +305,11 @@ mapview(mapENERGY, xcol = "Longitude", ycol = "Latitude",crs = 4269, grid = FALS
 
 # We’ll use the R built-in dataset called building2016nonres. We’ll use TotalGHGEmissions and SiteEnergyUseWN.kBtu. as the response variable and the following variables as the predictors :
   
-# 'GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA', 'NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','Number ofBuildings'.
+# 'GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding','GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA','NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','Number ofBuildings'.
 
 # To perform ridge regression, we’ll use functions from the glmnet package. This package requires the response variable to be a vector and the set of predictor variables to be of the class data.matrix.
 
-### 1- TARGET : TotalGHGEmissions : ###
+### 1- TARGET : TotalGHGEmissions : ### END
 
 glimpse(building2016nonres)
 
@@ -319,7 +319,7 @@ y_target_CO2 <- building2016nonres$TotalGHGEmissions
 
 # Define Matrix of Predictor Variables :
 
-X_matrix_CO2 <- data.matrix(building2016nonres[, c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding','GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA','NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
+X_matrix_CO2 <- data.matrix(building2016nonres[,c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding','GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA', 'SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA','NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
 
 # Fit Ridge Regression Model :
 
