@@ -39,8 +39,8 @@ library(caret)
 library(glmnet)
 library(Metrics)
 
-In 2050, the city of Seattle has set itself the goal of achieving a level of carbon neutrality.
-In order not to bear new additional costs, like the readings of the campaigns carried out in 2015 and 2016, the city needs predictions for its buildings not intended for housing.
+# In 2050, the city of Seattle has set itself the goal of achieving a level of carbon neutrality.
+# In order not to bear new additional costs, like the readings of the campaigns carried out in 2015 and 2016, the city needs predictions for its buildings not intended for housing.
 
 ##### I Understanding Of The Dataset : #####
 
