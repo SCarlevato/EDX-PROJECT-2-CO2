@@ -62,6 +62,8 @@ names(building2016)
 
 dim(building2016)
 
+# Observations : There are 3376 Rows and 46 Columns in the Initial Dataframe.
+
 # 5- Types of Qualitative and Quantitative Variables of the Initial Dataset :
 
 str(building2016)
