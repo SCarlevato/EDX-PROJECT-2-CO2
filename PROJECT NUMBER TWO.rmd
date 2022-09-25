@@ -354,7 +354,7 @@ best_lambda <- cv_model$lambda.min
 
 best_lambda
 
-# The lambda value that minimizes the test MSE turns out to be 51.
+# Observations : The lambda value that minimizes the test MSE turns out to be 51.
 
 # Produce Plot of Test MSE by Lambda Value :
 
