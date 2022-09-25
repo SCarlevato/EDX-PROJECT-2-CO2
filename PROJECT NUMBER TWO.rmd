@@ -88,7 +88,7 @@ is.na(building2016)
 
 sum(is.na(building2016)) 
 
-# Observations :The dataset contains 11259 NaNs.
+# Observations : The dataset contains 11259 NaNs.
 
 ### 3- List of Variables and their Types of the Entire Dataset : ###
 
@@ -180,14 +180,14 @@ building2016nonres[is.na(building2016nonres)] <- 0
 
 sum(is.na(building2016nonres)) 
 
-# II Multivariate Analysis :
+##### II Multivariate Analysis : #####
 
 require(plyr)
 require(dplyr)
 
-#A- Univariate Analysis :
+#### A- Univariate Analysis : ####
 
-# Type of Habitations :
+### 1- Type of Habitations : ###
 
 building2016 %>% 
   group_by(BuildingType) %>% 
@@ -196,9 +196,9 @@ building2016 %>%
   geom_bar(stat = 'identity') +
   xlab("BuildingType") + ggtitle("Type of Habitations") 
 
-## The Most Important Type Of Habitations is "Non Residential" Type and "Multifamily LR (1-4). For my study, I am interested in Non Residential Type. ##
+# Observations : The Most Important Type Of Habitations is "Non Residential" Type and "Multifamily LR (1-4). For my study, I am interested in Non Residential Type.
 
-# Number Of Floors : 
+### 2- Number Of Floors : ###
 
 building2016 %>% 
   group_by(NumberofFloors) %>% 
@@ -207,53 +207,53 @@ building2016 %>%
   geom_bar(stat = 'identity') +
   xlab("NumberofFloors") + ggtitle("Number Of Floors") 
 
-## The Most Important Number Of Floors for a Dwelling is "3". ##
+# Observations : The Most Important Number Of Floors for a Dwelling is "3".
 
-#B- Bivariate Analysis :
+#### B- Bivariate Analysis : ####
 
-# Number of Buildings / Building Type :
+### 1- Number of Buildings / Building Type : ###
 
 ggplot(building2016, aes(x=NumberofBuildings, y=BuildingType)) + geom_boxplot() + xlim(0,10)
 
-## Multifamily HR(10+) has the most important spread of values for the Number Of Buildings. ##
+# Observations : Multifamily HR(10+) has the most important spread of values for the Number Of Buildings.
 
-# Number of Floors / Building Type :
+### 2-  Number of Floors / Building Type : ###
 
 ggplot(building2016, aes(x=NumberofFloors, y=BuildingType)) + geom_boxplot() + xlim(0,50)
 
-## Multifamily HR(10+) has the most important spread of values for the Number Of Floors. ##
+# Observations : Multifamily HR(10+) has the most important spread of values for the Number Of Floors. 
 
-# GHGEmissionsIntensity / Building Type :
+### 3- GHGEmissionsIntensity / Building Type : ###
 
 ggplot(building2016, aes(x=GHGEmissionsIntensity, y=BuildingType)) + geom_boxplot() + xlim(0,20)
 
-## NonResidential COS has the most important spread of values for the GHGEmissionsIntensity. ##
+# Observations : NonResidential COS has the most important spread of values for the GHGEmissionsIntensity.
 
-# TotalGHGEmissions / Building Type :
+### 4- TotalGHGEmissions / Building Type : ###
 
 ggplot(building2016, aes(x=TotalGHGEmissions, y=BuildingType)) + geom_boxplot() + xlim(0,500)
 
-## Multifamily HR(10+) has the most important spread of values for the TotalGHGEmissions. ##
+# Observations : Multifamily HR(10+) has the most important spread of values for the TotalGHGEmissions.
 
-# SiteEnergyUseWN.kBtu. / Building Type :
+### 5- SiteEnergyUseWN.kBtu. / Building Type : ###
 
 building2016$SiteEnergyUseWN.kBtu. <- as.integer(building2016$SiteEnergyUseWN.kBtu.)
 
 ggplot(building2016, aes(x= SiteEnergyUseWN.kBtu., y=BuildingType)) + geom_boxplot() + xlim(0,5000000)
 
-## Multifamily MR (10+) has the most important spread of values for the SiteEnergyUseWN.kBtu. ##
+# Observations : Multifamily MR (10+) has the most important spread of values for the SiteEnergyUseWN.kBtu.
 
-# SiteEnergyUse.kBtu. / Building Type :
+### 6- SiteEnergyUse.kBtu. / Building Type : ###
 
 building2016$SiteEnergyUse.kBtu. <- as.integer(building2016$SiteEnergyUse.kBtu.)
 
 ggplot(building2016, aes(x= SiteEnergyUse.kBtu., y=BuildingType)) + geom_boxplot() + xlim(0,5000000)
 
-## Multifamily MR (10+) has the most important spread of values for the SiteEnergyUse.kBtu. ##
+# Observations : Multifamily MR (10+) has the most important spread of values for the SiteEnergyUse.kBtu.
 
-#C- Multivariate Analysis :
+#### C- Multivariate Analysis : ####
 
-# Correlation Matrix :
+### Correlation Matrix : ###
 
 corrdataset <- building2016nonres %>% select(NumberofFloors, NumberofBuildings, PropertyGFATotal, PropertyGFAParking, SiteEUI.kBtu.sf., SiteEnergyUse.kBtu., SiteEnergyUseWN.kBtu., TotalGHGEmissions, GHGEmissionsIntensity)
 
@@ -261,11 +261,11 @@ mcor <- cor(corrdataset, method = c("pearson", "kendall", "spearman"))
 
 corrplot(mcor, type="upper", order="hclust", tl.col="black", tl.srt=45)
 
-## Variables like Number Of Buildings or Number Of Floors have a real impact on Variables like SiteEnergyUse.kBtu. or TotalGHGEmissions ##
+# Observations : Variables like Number Of Buildings or Number Of Floors have a real impact on Variables like SiteEnergyUse.kBtu. or TotalGHGEmissions.
 
-# D- GEOLOCALISATION :
+#### D- GEOLOCALISATION : ####
 
-# TOTALGHGEmissions :
+### 1- TOTALGHGEmissions : ###
 
 mapCO2 <- building2016nonres %>% select(TotalGHGEmissions, Latitude, Longitude)
 
@@ -273,7 +273,7 @@ mapCO2
 
 mapview(mapCO2, xcol = "Longitude", ycol = "Latitude", crs = 4269, grid = FALSE)
 
-# Energy :
+### 2- Energy : ###
 
 mapENERGY <- building2016nonres %>% select(SiteEnergyUseWN.kBtu., Latitude, Longitude)
 
@@ -281,7 +281,7 @@ mapENERGY
 
 mapview(mapENERGY, xcol = "Longitude", ycol = "Latitude",crs = 4269, grid = FALSE)
 
-# III MACHINE LEARNING :
+##### III MACHINE LEARNING : #####
 
 # A- Ridge Regression :
 
