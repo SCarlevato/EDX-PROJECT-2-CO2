@@ -329,7 +329,7 @@ X_matrix_CO2 <- data.matrix(building2016nonres[,c('GHGEmissionsIntensityPerFloor
 
 # Also note that ridge regression requires the data to be standardized such that each predictor variable has a mean of 0 and a standard deviation of 1.
 
-# Fortunately glmnet() automatically performs this standardization for you. If you happened to already standardize the variables, you can specify standardize=False.
+# Fortunately glmnet() automatically performs this standardization. 
 
 model <- glmnet(X_matrix_CO2, y_target_CO2, alpha = 0)
 
@@ -395,25 +395,25 @@ R_squared <- 1 - sse/sst
 
 R_squared
 
-# The R-squared turns out to be 0,91. That is, the best model was able to explain 91.99% of the variation in the response values of the training data.
+# Conclusion : The R-squared turns out to be 0,91. That is, the best model was able to explain 91.99% of the variation in the response values of the training data.
 
 # Find MAE :
 
 mae(actual = y_target_CO2, predicted = y_predicted)
 
-# Observations : MAE = 66
+# Conclusion : MAE = 66
 
 # Find MSE :
 
 mse(actual = y_target_CO2, predicted = y_predicted)
 
-# Observations : MSE = 30667
+# Conclusion : MSE = 30667
 
 # Find RMSE :
 
 rmse(actual = y_target_CO2, predicted = y_predicted)
 
-# Observations : RMSE = 175
+# Conclusion : RMSE = 175
 
 ### 2- TARGET : SiteEnergyUseWN.kBtu. : ###
 
@@ -475,19 +475,27 @@ rsq <- 1 - sse/sst
 
 rsq
 
+# Conclusion : The R-squared turns out to be 0,99. That is, the best model was able to explain 91.99% of the variation in the response values of the training data.
+
 # Find MAE :
 
 mae(actual = y_target_NRJ, predicted = y_predicted)
+
+# Conclusion : MAE = 480770
 
 # Find MSE :
 
 mse(actual = y_target_NRJ, predicted = y_predicted)
 
+# Conclusion : MSE = 3.335012e+12
+
 # Find RMSE :
 
 rmse(actual = y_target_NRJ, predicted = y_predicted)
 
-#### B- XG BOOST : ####
+# Conclusion : RMSE = 1826201
+
+#### B- XG BOOST : #### END
 
 ### 1- TARGET : TotalGHGEmissions : ###
 
