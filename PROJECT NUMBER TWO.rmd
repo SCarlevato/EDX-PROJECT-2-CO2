@@ -319,8 +319,7 @@ y_target_CO2 <- building2016nonres$TotalGHGEmissions
 
 # Define Matrix of Predictor Variables :
 
-X_matrix_CO2 <- data.matrix(building2016nonres[, c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA',
-                                        'NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
+X_matrix_CO2 <- data.matrix(building2016nonres[, c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding','GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA','NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
 
 # Fit Ridge Regression Model :
 
@@ -392,9 +391,9 @@ sse <- sum((y_predicted - y_target_CO2)^2)
 
 # Find R-Squared :
 
-rsq <- 1 - sse/sst
+R_squared <- 1 - sse/sst
 
-rsq
+R_squared
 
 # The R-squared turns out to be 0,91. That is, the best model was able to explain 91.99% of the variation in the response values of the training data.
 
@@ -402,13 +401,19 @@ rsq
 
 mae(actual = y_target_CO2, predicted = y_predicted)
 
+# Observations : MAE = 66
+
 # Find MSE :
 
 mse(actual = y_target_CO2, predicted = y_predicted)
 
+# Observations : MSE = 30667
+
 # Find RMSE :
 
 rmse(actual = y_target_CO2, predicted = y_predicted)
+
+# Observations : RMSE = 175
 
 ### 2- TARGET : SiteEnergyUseWN.kBtu. : ###
 
@@ -420,8 +425,7 @@ y_target_NRJ <- building2016nonres$SiteEnergyUseWN.kBtu.
 
 # Define matrix of predictor variables :
 
-X_matrix_NRJ <- data.matrix(building2016nonres[, c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','TotalGHGEmissions','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA',
-                                        'NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
+X_matrix_NRJ <- data.matrix(building2016nonres[, c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding','GHGEmissionsIntensity','TotalGHGEmissions','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA','NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
                                         
 # Fit Ridge Regression Model :
 
@@ -511,15 +515,13 @@ test = building2016nonres[-parts, ]
 
 # Define Predictor and Response Variables in Training Set :
 
-train_x = data.matrix(train[, c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','TotalGHGEmissions','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA',
-                                'NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
+train_x = data.matrix(train[, c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','TotalGHGEmissions','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA','NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
 
 train_y = train$TotalGHGEmissions
 
 # Define Predictor and Response Variables in Testing Set :
 
-test_x = data.matrix(test[, c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','TotalGHGEmissions','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA',
-                              'NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
+test_x = data.matrix(test[, c('GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','TotalGHGEmissions','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA','NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
 
 test_y = test$TotalGHGEmissions
 
