@@ -42,71 +42,71 @@ library(Metrics)
 In 2050, the city of Seattle has set itself the goal of achieving a level of carbon neutrality.
 In order not to bear new additional costs, like the readings of the campaigns carried out in 2015 and 2016, the city needs predictions for its buildings not intended for housing.
 
-# I Understanding Of The Dataset :
+##### I Understanding Of The Dataset : #####
 
-# A- Load Data And Exploration : 
+#### A- Load Data And Exploration : ####
 
-# 1- Loading csv file "Building 2016" :
+### 1- Loading csv file "Building 2016" : ###
 
 building2016 <- read.csv("/Users/sylvaincarlevato/PRISONNER666/2016_Building_Energy_Benchmarking.csv")
 
-# 2- Visualization of the "Building 2016" Dataframe :
+### 2- Visualization of the "Building 2016" Dataframe : ###
 
 head(building2016)
 
-# 3- Names of Columns in the Dataset :
+### 3- Names of Columns in the Dataset : ###
 
 names(building2016)
 
-# 4- Number of Rows and Columns of the Initial Dataset :
+### 4- Number of Rows and Columns of the Initial Dataset : ###
 
 dim(building2016)
 
 # Observations : There are 3376 Rows and 46 Columns in the Initial Dataframe.
 
-# 5- Types of Qualitative and Quantitative Variables of the Initial Dataset :
+### 5- Types of Qualitative and Quantitative Variables of the Initial Dataset : ###
 
 str(building2016)
 
-# 6- Quantification of Duplicate Values of the Initial Dataset :
+### 6- Quantification of Duplicate Values of the Initial Dataset : ###
 
 sum(duplicated(building2016))
 
 # Observations : The dataset contains 0 duplicate values.
 
-# 7- Statistical Informations of the Initial Dataset :
+### 7- Statistical Informations of the Initial Dataset : ###
 
 summary(building2016)
 
-# B- Missing Values :
+#### B- Missing Values : ####
 
-# 1- Location of NaNs in the Dataset :
+### 1- Location of NaNs in the Dataset : ###
 
 is.na(building2016)
 
-# 2- Sum of NaNs in Dataset :
+### 2- Sum of NaNs in Dataset : ###
 
 sum(is.na(building2016)) 
 
 # Observations :The dataset contains 11259 NaNs.
 
-# 3- List of Variables and their Types of the Entire Dataset :
+### 3- List of Variables and their Types of the Entire Dataset : ###
 
 vis_dat(building2016)
 
-# 4- Percentage of Missing Values :
+### 4- Percentage of Missing Values : ###
 
 vis_miss(building2016)
 
-# 5- Other Visualizations of Missing Dataset Values :
+### 5- Other Visualizations of Missing Dataset Values : ###
 
 gg_miss_var(building2016)
 
-# C- Understanding Targets :
+#### C- Understanding Targets : ####
 
-# ALPHA - TotalGHGEmissions :
+### ALPHA - TotalGHGEmissions : ###
 
-# 1- Visualization of the First 10 Values of the TotalGHGEmissions Column :
+### 1- Visualization of the First 10 Values of the TotalGHGEmissions Column : ###
 
 ghge <- building2016 %>% select(starts_with("TotalGHGEmissions"))
 
@@ -116,37 +116,37 @@ ghge[1:10,]
 
 summary(ghge)
 
-# BETA - SiteEnergyUseWN(kBtu) :
+### BETA - SiteEnergyUseWN(kBtu) : ###
 
-# 1- Visualization of the First 10 Values of the SiteEnergyUseWN(kBtu) Column :
+### 1- Visualization of the First 10 Values of the SiteEnergyUseWN(kBtu) Column : ###
 
 energ <- building2016 %>% select(starts_with("SiteEnergyUseWN.kBtu."))
 
 energ[1:10,]
 
-# 2- Descriptive Statistics of the SiteEnergyUseWN(kBtu) Column :
+### 2- Descriptive Statistics of the SiteEnergyUseWN(kBtu) Column : ###
 
 summary(energ)
 
-# D- Selection of the type of dwellings :
+#### D- Selection of the type of dwellings : ####
 
-# 1- Type of Buildings to choose:
+### 1- Type of Buildings to choose : ### 
 
 building2016 %>% select(BuildingType)
 
-# 2- Basic Piechart of Dwellings :
+### 2- Basic Piechart of Dwellings : ###
 
 pie(table(building2016$BuildingType), main = "Type of Habitations")
 
-# 3- Selection of Buildings not intended for Housing:
+### 3- Selection of Buildings not intended for Housing : ###
 
 building2016nonres <- filter(building2016, BuildingType == "NonResidential")
 
 building2016nonres
 
-# E- Feature Engineering :
+#### E- Feature Engineering : ####
 
-# 1- Creating "BuildingAge" Column :
+### 1- Creating "BuildingAge" Column : ###
 
 building2016nonres$BuildingAge <- building2016nonres$DataYear - building2016nonres$YearBuilt
 
@@ -154,13 +154,13 @@ building2016nonres$BuildingAge
 
 building2016nonres
 
-# 2- Moving Column BuildingAge :
+### 2- Moving Column BuildingAge : ###
 
 building2016nonres <- building2016nonres %>% relocate(BuildingAge, .before = BuildingType)
 
 building2016nonres
 
-# 3- New Variables : 
+### 3- New Variables : ###
 
 building2016nonres$GFAPerBuilding <- round((building2016nonres$PropertyGFATotal / building2016nonres$NumberofBuildings),3)
 
@@ -174,7 +174,7 @@ building2016nonres$TotalGHGEmissionsPerFloor <- round((building2016nonres$TotalG
 
 building2016nonres$GHGEmissionsIntensityPerFloor <- round((building2016nonres$GHGEmissionsIntensity / building2016nonres$NumberofFloors), 3)
 
-# 4- Replacement of NaN by 0 :
+### 4- Replacement of NaN by 0 : ###
 
 building2016nonres[is.na(building2016nonres)] <- 0
 
