@@ -114,7 +114,7 @@ ghge[1:10,]
 
 summary(ghge)
 
-BETA - SiteEnergyUseWN(kBtu) :
+# BETA - SiteEnergyUseWN(kBtu) :
 
 # 1- Visualization of the First 10 Values of the SiteEnergyUseWN(kBtu) Column :
 
