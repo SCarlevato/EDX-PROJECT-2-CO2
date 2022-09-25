@@ -112,7 +112,7 @@ ghge <- building2016 %>% select(starts_with("TotalGHGEmissions"))
 
 ghge[1:10,]
 
-# 2- Descriptive Statistics of the TotalGHGEmissions Column :
+### 2- Descriptive Statistics of the TotalGHGEmissions Column : ###
 
 summary(ghge)
 
