@@ -495,7 +495,7 @@ rmse(actual = y_target_NRJ, predicted = y_predicted)
 
 # Conclusion : RMSE = 1826201
 
-#### B- XG BOOST : #### END
+#### B- XG BOOST : #### 
 
 ### 1- TARGET : TotalGHGEmissions : ###
 
@@ -571,15 +571,23 @@ pred_y = predict(model_xgboost, xgb_test)
 
 # MSE :
 
-mean((test_y - pred_y)^2) 
+MSE = mean((test_y - pred_y)^2) 
+
+MSE 
+
+# Conclusion : MSE = 137
 
 # MAE :
 
 caret::MAE(test_y, pred_y) 
 
+# Conclusion : MAE : 4.50
+
 # RMSE :
 
 caret::RMSE(test_y, pred_y) 
+
+# Conclusion : RMSE : 12
 
 ### 2- TARGET : SiteEnergyUseWN.kBtu. : ###
 
@@ -657,15 +665,21 @@ pred_y = predict(model_xgboost, xgb_test)
 
 # MSE :
 
-mean((test_y - pred_y)^2) 
+MSE = mean((test_y - pred_y)^2)
+
+# Conclusion : MSE = 1.408897e+14
 
 # MAE :
 
 caret::MAE(test_y, pred_y) 
 
+# Conclusion : MAE = 1276402
+
 # RMSE :
 
-caret::RMSE(test_y, pred_y) %>% knitr::kable()
+caret::RMSE(test_y, pred_y) 
+
+# Conclusion : RMSE = 11869695
 
 #### Appendix ####
 
