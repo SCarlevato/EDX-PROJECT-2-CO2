@@ -305,7 +305,7 @@ mapview(mapENERGY, xcol = "Longitude", ycol = "Latitude",crs = 4269, grid = FALS
 
 # We’ll use the R built-in dataset called building2016nonres. We’ll use TotalGHGEmissions and SiteEnergyUseWN.kBtu. as the response variable and the following variables as the predictors :
   
-# Variables : 'GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA', 'NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','Number ofBuildings'.
+# 'GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA', 'NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','Number ofBuildings'.
 
 # To perform ridge regression, we’ll use functions from the glmnet package. This package requires the response variable to be a vector and the set of predictor variables to be of the class data.matrix.
 
