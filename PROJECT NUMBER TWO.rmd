@@ -283,15 +283,15 @@ mapview(mapENERGY, xcol = "Longitude", ycol = "Latitude",crs = 4269, grid = FALS
 
 ##### III MACHINE LEARNING : #####
 
-# A- Ridge Regression :
+#### A- Ridge Regression : ####
 
-## Ridge regression is a method we can use to fit a regression model when multicollinearity is present in the data. ##
+# Ridge regression is a method we can use to fit a regression model when multicollinearity is present in the data.
 
-# In a nutshell, least squares regression tries to find coefficient estimates that minimize the sum of squared residuals (RSS) :  #
+# Least squares regression tries to find coefficient estimates that minimize the sum of squared residuals (RSS) :
   
-#  RSS = Σ(yi – ŷi)2 #
+# RSS = Σ(yi – ŷi)2 
 
-# where:
+# Xhere:
 
 # Σ: A greek symbol that means sum
 # yi: The actual response value for the ith observation
@@ -299,18 +299,15 @@ mapview(mapENERGY, xcol = "Longitude", ycol = "Latitude",crs = 4269, grid = FALS
 
 # Conversely, ridge regression seeks to minimize the following:
   
-# RSS + λΣβj2
-
-# where j ranges from 1 to p predictor variables and λ ≥ 0.
+# RSS + λΣβj2 where j ranges from 1 to p predictor variables and λ ≥ 0.
 
 # This second term in the equation is known as a shrinkage penalty. In ridge regression, we select a value for λ that produces the lowest possible test MSE (mean squared error).
 
-# We’ll use the R built-in dataset called building2016nonres. We’ll use TotalGHGEmissions and SiteEnergyUseWN.kBtu. as the response variable and the following variables as the predictors:
+# We’ll use the R built-in dataset called building2016nonres. We’ll use TotalGHGEmissions and SiteEnergyUseWN.kBtu. as the response variable and the following variables as the predictors :
   
-'GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA',
-'NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','NumberofBuildings')])
+# Variables : 'GHGEmissionsIntensityPerFloor', 'TotalGHGEmissionsPerFloor', 'EnergyUsePerBuilding', 'EnergyUsePerFloor', 'GFAPerFloor', 'GFAPerBuilding', 'GHGEmissionsIntensity','SiteEnergyUseWN.kBtu.','SiteEnergyUse.kBtu.','ThirdLargestPropertyUseTypeGFA','SecondLargestPropertyUseTypeGFA','LargestPropertyUseTypeGFA', 'NaturalGas.kBtu.','NaturalGas.therms.','Electricity.kBtu.','Electricity.kWh.','PropertyGFABuilding.s.','PropertyGFAParking','PropertyGFATotal','NumberofFloors','Number ofBuildings'
 
-# To perform ridge regression, we’ll use functions from the glmnet package. This package requires the response variable to be a vector and the set of predictor variables to be of the class data.matrix.#
+# To perform ridge regression, we’ll use functions from the glmnet package. This package requires the response variable to be a vector and the set of predictor variables to be of the class data.matrix.
 
 # TARGET 1 : TotalGHGEmissions :
 
