@@ -97,8 +97,6 @@ gg_miss_var(building2016)
 
 #### C- Executive Summary : Understanding Targets : ####
 
-# GOAL : Predict the Target Variables "TotalGHGEmissions" & "SiteEnergyUseWN.kBtu." using the Other Variables of the Dataframe, for NonResidential Type of Buildings.
-
 ### ALPHA - TotalGHGEmissions : ###
 
 ### 1- Visualization of the First 10 Values of the TotalGHGEmissions Column : ###
